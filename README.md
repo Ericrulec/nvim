@@ -5,6 +5,7 @@ An epic neovim setup originally forked from the talented dev [Takuya Matsuyama](
 **Features**
 
 - Sleek, minimal, but functional
+- Packer.nvim
 - Telescope fuzzy find files and keywords
 - Mason lsp
 - Null-ls with eslint_d formatter
