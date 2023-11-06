@@ -1,3 +1,4 @@
+--[[
 local status, n = pcall(require, "neosolarized")
 if (not status) then return end
 
@@ -34,3 +35,5 @@ Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl,
 Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
 
 Group.new("HoverBorder", colors.yellow, colors.none, styles.NONE)
+]]
+   --
