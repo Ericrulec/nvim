@@ -1,4 +1,4 @@
-!()[example.png]
+![rice](example.png)
 
 ---
 
