@@ -1,7 +1,7 @@
-require('craftzdog.base')
-require('craftzdog.highlights')
-require('craftzdog.maps')
-require('craftzdog.plugins')
+require('erik.base')
+require('erik.highlights')
+require('erik.maps')
+require('erik.plugins')
 
 local has = vim.fn.has
 local is_mac = has "macunix"
@@ -10,14 +10,14 @@ local is_win = has "win32"
 local is_wsl = has "wsl"
 
 if is_mac then
-  require('craftzdog.macos')
+    require('erik.macos')
 end
 if is_linux then
-  require('craftzdog.linux')
+    require('erik.linux')
 end
 if is_win then
-  require('craftzdog.windows')
+    require('erik.windows')
 end
 if is_wsl then
-  require('craftzdog.wsl')
+    require('erik.wsl')
 end
