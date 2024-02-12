@@ -43,7 +43,7 @@ lazy.setup({
         opts = {
             -- you can disable colors by uncommenting this line
             -- no_baleia_support = true,
-            default_command = "npm run build"
+            default_command = ""
         }
     },
     'nvim-lualine/lualine.nvim', -- Statusline
