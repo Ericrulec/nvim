@@ -31,6 +31,21 @@ lazy.setup({
             },
         },
     },
+    {
+        "ej-shafran/compile-mode.nvim", -- Compile-mode like Emacs
+        branch = "latest",
+        -- or a specific version:
+        -- tag = "v2.0.0"
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            { "m00qek/baleia.nvim", tag = "v1.3.0" },
+        },
+        opts = {
+            -- you can disable colors by uncommenting this line
+            -- no_baleia_support = true,
+            default_command = "npm run build"
+        }
+    },
     'nvim-lualine/lualine.nvim', -- Statusline
     'nvim-lua/plenary.nvim',     -- Common utilities
     'onsails/lspkind-nvim',      -- vscode-like pictograms
