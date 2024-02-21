@@ -24,6 +24,7 @@ keymap.set("n", "<C-P>", "<C-I>")
 -- Split window
 keymap.set('n', 'ss', ':split<Return><C-w>w')
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
+
 -- Move window
 keymap.set('n', '<Space>', '<C-w>w')
 keymap.set('', 'sh', '<C-w>h')
@@ -36,20 +37,6 @@ keymap.set('n', '<C-w><left>', '<C-w><')
 keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
-
--- Rebind some Altgr keys
-keymap.set('i', "å", "[")
-keymap.set('i', "¨", "]")
-keymap.set('i', "Å", "{")
-keymap.set('i', "^", "}")
-keymap.set('c', "å", "[")
-keymap.set('c', "¨", "]")
-keymap.set('c', "Å", "{")
-keymap.set('c', "^", "}")
-keymap.set('n', "å", "[")
-keymap.set('n', "¨", "]")
-keymap.set('n', "Å", "{")
-keymap.set('n', "^", "}")
 
 -- Make Ctrl-c behave like ESC
 keymap.set("i", "<C-c>", "<Esc>")
