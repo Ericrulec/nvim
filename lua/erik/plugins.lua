@@ -49,6 +49,8 @@ lazy.setup({
     'nvim-lualine/lualine.nvim', -- Statusline
     'nvim-lua/plenary.nvim',     -- Common utilities
     'onsails/lspkind-nvim',      -- vscode-like pictograms
+    'saadparwaiz1/cmp_luasnip',  -- bridge between luasnip and nvim-cmp
+    'L3MON4D3/LuaSnip',          -- snippets
     'hrsh7th/cmp-buffer',        -- nvim-cmp source for buffer words
     'hrsh7th/cmp-nvim-lsp',      -- nvim-cmp source for neovim',s built-in LSP
     'hrsh7th/nvim-cmp',          -- Completion
@@ -58,7 +60,6 @@ lazy.setup({
     'williamboman/mason-lspconfig.nvim',
 
     'glepnir/lspsaga.nvim', -- LSP UIs
-    'L3MON4D3/LuaSnip',
     {
         'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",
