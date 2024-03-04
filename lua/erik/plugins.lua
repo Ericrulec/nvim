@@ -49,17 +49,36 @@ lazy.setup({
     'nvim-lualine/lualine.nvim', -- Statusline
     'nvim-lua/plenary.nvim',     -- Common utilities
     'onsails/lspkind-nvim',      -- vscode-like pictograms
-    'saadparwaiz1/cmp_luasnip',  -- bridge between luasnip and nvim-cmp
-    'L3MON4D3/LuaSnip',          -- snippets
-    'hrsh7th/cmp-buffer',        -- nvim-cmp source for buffer words
-    'hrsh7th/cmp-nvim-lsp',      -- nvim-cmp source for neovim',s built-in LSP
-    'hrsh7th/nvim-cmp',          -- Completion
-    'neovim/nvim-lspconfig',     -- LSP
-    'nvimtools/none-ls.nvim',    --  Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+
+    {
+        'hrsh7th/nvim-cmp', -- Completion
+        dependencies = {
+            {
+                'L3MON4D3/LuaSnip',
+                build = (function()
+                    -- Build Step is needed for regex support in snippets
+                    -- This step is not supported in many windows environments
+                    -- Remove the below condition to re-enable on windows
+                    if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+                        return
+                    end
+                    return 'make install_jsregexp'
+                end)(),
+            },
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
+
+            'hrsh7th/cmp-nvim-lsp', -- nvim-cmp source for neovim',s built-in LSP
+            'hrsh7th/cmp-buffer',   -- nvim-cmp source for buffer words
+            'hrsh7th/cmp-path',     -- nvim-cmp source for path
+        },
+    },
+    'neovim/nvim-lspconfig',  -- LSP
+    'nvimtools/none-ls.nvim', --  Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
 
-    'glepnir/lspsaga.nvim', -- LSP UIs
+    'nvimdev/lspsaga.nvim', -- LSP UIs
     {
         'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",

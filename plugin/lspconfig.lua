@@ -67,23 +67,20 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+--[[
 nvim_lsp.tailwindcss.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "html", "templ" },
     init_options = { userLanguages = { templ = "html" } },
 }
+]]
 
 nvim_lsp.tsserver.setup {
     on_attach = on_attach,
     filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" },
     capabilities = capabilities
-}
-
-nvim_lsp.sourcekit.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
 }
 
 nvim_lsp.pylsp.setup {
@@ -116,9 +113,15 @@ nvim_lsp.pylsp.setup {
 }
 
 nvim_lsp.gopls.setup {
+    cmd = { "/home/erik/go/bin/gopls", "--remote=auto" },
     on_attach = on_attach,
     capabilities = capabilities,
+    init_options = {
+        usePlaceholders = true,
+        completeUnimported = true,
+    },
 }
+
 vim.filetype.add({ extension = { templ = "templ" } })
 nvim_lsp.templ.setup {
     on_attach = on_attach,

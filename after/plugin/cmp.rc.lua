@@ -1,6 +1,10 @@
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 local lspkind = require 'lspkind'
+local luasnip = require 'luasnip'
+
+require('luasnip.loaders.from_vscode').lazy_load()
+luasnip.config.setup {}
 
 local function formatForTailwindCSS(entry, vim_item)
     if vim_item.kind == 'Color' and entry.completion_item.documentation then
@@ -20,28 +24,42 @@ local function formatForTailwindCSS(entry, vim_item)
     return vim_item
 end
 
-cmp.setup({
+cmp.setup {
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
-    mapping = cmp.mapping.preset.insert({
+    --completion = { completeopt = "menu,menuone,oninsert" },
+    mapping = cmp.mapping.preset.insert {
+        --['<C-n>'] = cmp.mapping.select_next_item(),
+        --['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-Space>'] = cmp.mapping.complete {},
         ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
+        ['<CR>'] = cmp.mapping.confirm {
+            --['<C-y>'] = cmp.mapping.confirm
             behavior = cmp.ConfirmBehavior.Replace,
             select = true
-        }),
-    }),
-    sources = cmp.config.sources({
+        },
+        ['<C-l>'] = cmp.mapping(function()
+            if luasnip.expand_or_locally_jumpable() then
+                luasnip.expand_or_jump()
+            end
+        end, { 'i', 's' }),
+        ['<C-h>'] = cmp.mapping(function()
+            if luasnip.locally_jumpable(-1) then
+                luasnip.jump(-1)
+            end
+        end, { 'i', 's' }),
+    },
+    sources = cmp.config.sources {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
     }, {
-        { name = 'buffer' },
-    }),
+    { name = 'buffer' },
+},
     formatting = {
         format = lspkind.cmp_format({
             maxwidth = 50,
@@ -50,8 +68,7 @@ cmp.setup({
                 return vim_item
             end
         })
-    }
-})
+    }, }
 
 vim.cmd [[
   set completeopt=menuone,noinsert,noselect
