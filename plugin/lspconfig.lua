@@ -78,7 +78,7 @@ nvim_lsp.tailwindcss.setup {
 
 nvim_lsp.tsserver.setup {
     on_attach = on_attach,
-    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx", "javascriptreact", },
     cmd = { "typescript-language-server", "--stdio" },
     capabilities = capabilities
 }

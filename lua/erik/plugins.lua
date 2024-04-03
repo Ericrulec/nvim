@@ -20,16 +20,35 @@ if (not status) then
     return
 end
 
-lazy.setup({
+function ColorMyGruvbox()
+    vim.opt.background = "dark"
+    vim.opt.termguicolors = true
+    vim.cmd.colorscheme("gruvbox")
+end
 
+function ColorMyGruberdarker()
+    vim.opt.background = "dark"
+    vim.opt.termguicolors = true
+    vim.cmd.colorscheme("gruber-darker")
+
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
+
+lazy.setup({
     {
         "blazkowolf/gruber-darker.nvim",
+        name = "gruber-darker",
         opts = {
             bold = false,
             italic = {
-                strings = false,
+                strings = true,
             },
         },
+    },
+    {
+        "ellisonleao/gruvbox.nvim",
+        name = "gruvbox",
     },
     {
         "ej-shafran/compile-mode.nvim", -- Compile-mode like Emacs
@@ -103,3 +122,6 @@ lazy.setup({
     'akinsho/nvim-bufferline.lua',
     'lewis6991/gitsigns.nvim',
 })
+
+-- Colorscheme
+ColorMyGruberdarker()
