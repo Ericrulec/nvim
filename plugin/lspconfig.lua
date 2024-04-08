@@ -67,14 +67,12 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
---[[
 nvim_lsp.tailwindcss.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "html", "templ" },
+    filetypes = { "html", "templ", "javascriptreact", "tsx", "jsx" },
     init_options = { userLanguages = { templ = "html" } },
 }
-]]
 
 nvim_lsp.tsserver.setup {
     on_attach = on_attach,
@@ -82,6 +80,13 @@ nvim_lsp.tsserver.setup {
     cmd = { "typescript-language-server", "--stdio" },
     capabilities = capabilities
 }
+
+--[[
+nvim_lsp.biome.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+]]
 
 nvim_lsp.pylsp.setup {
     on_attach = on_attach,
