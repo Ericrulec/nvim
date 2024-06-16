@@ -23,9 +23,6 @@ ts.setup({
         "lua",
         "embedded_template",
     },
-    autotag = {
-        enable = true,
-    },
     embedded_template = { enable = true, }
 })
 

@@ -66,6 +66,7 @@ protocol.CompletionItemKind = {
 
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local util = require "lspconfig/util"
 
 nvim_lsp.tailwindcss.setup {
     on_attach = on_attach,
@@ -131,6 +132,20 @@ vim.filetype.add({ extension = { templ = "templ" } })
 nvim_lsp.templ.setup {
     on_attach = on_attach,
     capabilities = capabilities,
+}
+
+nvim_lsp.rust_analyzer.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "rust" },
+    root_dir = util.root_pattern("Cargo.toml"),
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = {
+                allFeatures = true,
+            }
+        }
+    }
 }
 nvim_lsp.html.setup {
     on_attach = on_attach,
