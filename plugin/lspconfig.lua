@@ -133,7 +133,7 @@ nvim_lsp.templ.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
-
+--[[
 nvim_lsp.rust_analyzer.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -147,6 +147,7 @@ nvim_lsp.rust_analyzer.setup {
         }
     }
 }
+]]
 nvim_lsp.html.setup {
     on_attach = on_attach,
     capabilities = capabilities,
