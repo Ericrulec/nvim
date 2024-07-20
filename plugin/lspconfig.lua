@@ -71,7 +71,7 @@ local util = require "lspconfig/util"
 nvim_lsp.tailwindcss.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "html", "templ", "javascriptreact", "tsx", "jsx" },
+    filetypes = { "html", "templ", "javascriptreact", "tsx", "jsx", "vue" },
     init_options = { userLanguages = { templ = "html" } },
 }
 
@@ -81,13 +81,6 @@ nvim_lsp.tsserver.setup {
     cmd = { "typescript-language-server", "--stdio" },
     capabilities = capabilities
 }
-
---[[
-nvim_lsp.biome.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-]]
 
 nvim_lsp.pylsp.setup {
     on_attach = on_attach,
@@ -134,6 +127,10 @@ nvim_lsp.templ.setup {
     capabilities = capabilities,
 }
 --[[
+nvim_lsp.biome.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 nvim_lsp.rust_analyzer.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -147,13 +144,17 @@ nvim_lsp.rust_analyzer.setup {
         }
     }
 }
-]]
-nvim_lsp.html.setup {
+nvim_lsp.htmx.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "html", "ejs", "templ" },
 }
-nvim_lsp.htmx.setup {
+nvim_lsp.ltex.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+]]
+nvim_lsp.html.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "html", "ejs", "templ" },
@@ -184,12 +185,7 @@ nvim_lsp.cssls.setup {
     capabilities = capabilities
 }
 
-nvim_lsp.ltex.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
-nvim_lsp.svelte.setup {
+nvim_lsp.volar.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
