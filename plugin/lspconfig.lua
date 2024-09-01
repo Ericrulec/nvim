@@ -75,11 +75,30 @@ nvim_lsp.tailwindcss.setup {
     init_options = { userLanguages = { templ = "html" } },
 }
 
+local mason_registry = require('mason-registry')
+local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+    '/node_modules/@vue/language-server'
+
 nvim_lsp.tsserver.setup {
     on_attach = on_attach,
-    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx", "javascriptreact", },
-    cmd = { "typescript-language-server", "--stdio" },
-    capabilities = capabilities
+    capabilities = capabilities,
+    init_options = {
+        plugins = {
+            {
+                name = '@vue/typescript-plugin',
+                --location = vue_language_server_path,
+                location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+                languages = { "javascript", "typescript", "vue" },
+            },
+        },
+    },
+    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx", "javascriptreact", "vue" },
+    --cmd = { "typescript-language-server", "--stdio" },
+}
+
+nvim_lsp.volar.setup {
+    --on_attach = on_attach,
+    --capabilities = capabilities,
 }
 
 nvim_lsp.pylsp.setup {
@@ -185,16 +204,6 @@ nvim_lsp.cssls.setup {
     capabilities = capabilities
 }
 
-nvim_lsp.volar.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = {
-        "typescript",
-        "javascript",
-        "vue",
-    },
-    root_dir = util.root_pattern("src/App.vue"),
-}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -223,23 +232,23 @@ vim.diagnostic.config({
 })
 
 -- If volar is active turn off tsserver
-vim.api.nvim_create_autocmd('LspAttach', {
-    group = vim.api.nvim_create_augroup('LspAttachConflicts', { clear = true }),
-    desc = 'Prevent tsserver and volar conflict',
-    callback = function(args)
-        if not (args.data and args.data.client_id) then
-            return
-        end
-
-        local active_clients = vim.lsp.get_clients()
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-        if client ~= nil and client.name == 'volar' then
-            for _, c in ipairs(active_clients) do
-                if c.name == 'tsserver' then
-                    c.stop()
-                end
-            end
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--     group = vim.api.nvim_create_augroup('LspAttachConflicts', { clear = true }),
+--     desc = 'Prevent tsserver and volar conflict',
+--     callback = function(args)
+--         if not (args.data and args.data.client_id) then
+--             return
+--         end
+--
+--         local active_clients = vim.lsp.get_clients()
+--         local client = vim.lsp.get_client_by_id(args.data.client_id)
+--
+--         if client ~= nil and client.name == 'volar' then
+--             for _, c in ipairs(active_clients) do
+--                 if c.name == 'tsserver' then
+--                     c.stop()
+--                 end
+--             end
+--         end
+--     end,
+-- })

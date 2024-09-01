@@ -53,17 +53,16 @@ lazy.setup({
     {
         "ej-shafran/compile-mode.nvim", -- Compile-mode like Emacs
         branch = "latest",
-        -- or a specific version:
-        -- tag = "v2.0.0"
         dependencies = {
             "nvim-lua/plenary.nvim",
             { "m00qek/baleia.nvim", tag = "v1.3.0" },
         },
-        opts = {
-            -- you can disable colors by uncommenting this line
-            -- no_baleia_support = true,
-            default_command = ""
-        }
+        config = function()
+            ---@type CompileModeOpts
+            vim.g.compile_mode = {
+                baleia_setup = true,
+            }
+        end
     },
     'nvim-lualine/lualine.nvim', -- Statusline
     'nvim-lua/plenary.nvim',     -- Common utilities
@@ -90,6 +89,7 @@ lazy.setup({
             'hrsh7th/cmp-nvim-lsp', -- nvim-cmp source for neovim',s built-in LSP
             'hrsh7th/cmp-buffer',   -- nvim-cmp source for buffer words
             'hrsh7th/cmp-path',     -- nvim-cmp source for path
+            'hrsh7th/cmp-cmdline',  -- nvim-cmp source for cmdline
         },
     },
     'neovim/nvim-lspconfig',  -- LSP
