@@ -86,8 +86,8 @@ nvim_lsp.tsserver.setup {
         plugins = {
             {
                 name = '@vue/typescript-plugin',
-                --location = vue_language_server_path,
-                location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+                location = vue_language_server_path,
+                --location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
                 languages = { "javascript", "typescript", "vue" },
             },
         },
@@ -97,8 +97,8 @@ nvim_lsp.tsserver.setup {
 }
 
 nvim_lsp.volar.setup {
-    --on_attach = on_attach,
-    --capabilities = capabilities,
+    on_attach = on_attach,
+    capabilities = capabilities,
 }
 
 nvim_lsp.pylsp.setup {
