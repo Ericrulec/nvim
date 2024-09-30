@@ -19,6 +19,7 @@ vim.opt.scrolloff = 10
 vim.opt.shell = 'zsh'
 vim.opt.relativenumber = true
 vim.opt.number = true
+vim.opt.numberwidth = 5
 vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.inccommand = 'split'
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search

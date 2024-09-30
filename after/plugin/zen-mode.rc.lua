@@ -3,7 +3,7 @@ if (not status) then return end
 
 zenMode.setup {
     window = {
-        backdrop = 1,
+        backdrop = 0.4,
     }
 }
 

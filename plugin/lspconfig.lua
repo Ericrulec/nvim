@@ -79,7 +79,7 @@ local mason_registry = require('mason-registry')
 local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
     '/node_modules/@vue/language-server'
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.ts_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     init_options = {
@@ -231,10 +231,10 @@ vim.diagnostic.config({
     },
 })
 
--- If volar is active turn off tsserver
+-- If volar is active turn off ts_ls
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --     group = vim.api.nvim_create_augroup('LspAttachConflicts', { clear = true }),
---     desc = 'Prevent tsserver and volar conflict',
+--     desc = 'Prevent ts_ls and volar conflict',
 --     callback = function(args)
 --         if not (args.data and args.data.client_id) then
 --             return
@@ -245,7 +245,7 @@ vim.diagnostic.config({
 --
 --         if client ~= nil and client.name == 'volar' then
 --             for _, c in ipairs(active_clients) do
---                 if c.name == 'tsserver' then
+--                 if c.name == 'ts_ls' then
 --                     c.stop()
 --                 end
 --             end
