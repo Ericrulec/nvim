@@ -3,7 +3,13 @@ if (not status) then return end
 
 zenMode.setup {
     window = {
-        backdrop = 0.7,
+        backdrop = 0.95,
+    },
+    plugins = {
+        alacritty = {
+            enabled = true,
+            font = "16",
+        }
     }
 }
 

@@ -20,11 +20,11 @@ if (not status) then
     return
 end
 
-function ColorMyGruvbox()
+--[[ function ColorMyGruvbox()
     vim.opt.background = "dark"
     vim.opt.termguicolors = true
     vim.cmd.colorscheme("gruvbox")
-end
+end ]]
 
 function ColorMyOceangruber()
     vim.opt.background = "dark"
@@ -33,6 +33,7 @@ function ColorMyOceangruber()
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "ZenBg", { bg = "none" })
 end
 
 lazy.setup({
@@ -46,10 +47,10 @@ lazy.setup({
             },
         },
     },
-    {
+    --[[ {
         "ellisonleao/gruvbox.nvim",
         name = "gruvbox",
-    },
+    }, ]]
     {
         "ej-shafran/compile-mode.nvim", -- Compile-mode like Emacs
         branch = "latest",
@@ -113,7 +114,7 @@ lazy.setup({
             'JoosepAlviste/nvim-ts-context-commentstring'
         }
     },
-    'norcalli/nvim-colorizer.lua',
+    --'norcalli/nvim-colorizer.lua',
     'folke/zen-mode.nvim',
     ({
         "iamcco/markdown-preview.nvim",
@@ -123,7 +124,7 @@ lazy.setup({
     'lewis6991/gitsigns.nvim',
 
     -- RUST
-    {
+    --[[ {
         "rust-lang/rust.vim",
         ft = "rust",
         init = function()
@@ -134,7 +135,7 @@ lazy.setup({
         'mrcjkb/rustaceanvim',
         version = '^4', -- Recommended
         lazy = false,   -- This plugin is already lazy
-    }
+    } ]]
 })
 
 -- Colorscheme
