@@ -15,11 +15,10 @@ keymap.set('n', '<C-a>', 'gg<S-v>G')
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
+-- New tab
 keymap.set('n', 'te', ':tabedit')
 keymap.set("n", "<C-I>", "<C-I>", { noremap = true })
 keymap.set("n", "<C-P>", "<C-I>")
-
--- New tab
 
 -- Split window
 keymap.set('n', 'ss', ':split<Return><C-w>w')
@@ -47,3 +46,10 @@ keymap.set("", "<C-c>", "<Esc>")
 -- Vertical movement
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Do not include white space characters
+keymap.set("x", "$", "g_")
+
+-- Go to start or end of line easier
+keymap.set("nx", "H", "g^")
+keymap.set("nx", "L", "g_")

@@ -92,7 +92,7 @@ nvim_lsp.ts_ls.setup {
             },
         },
     },
-    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx", "javascriptreact", "vue" },
+    filetypes = { "javascript", "json", "typescript", "typescriptreact", "typescript.tsx", "javascriptreact", "vue" },
     --cmd = { "typescript-language-server", "--stdio" },
 }
 
@@ -201,7 +201,8 @@ nvim_lsp.lua_ls.setup {
 
 nvim_lsp.cssls.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    filetypes = { "html", "css" },
 }
 
 
