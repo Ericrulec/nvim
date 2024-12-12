@@ -51,5 +51,7 @@ keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("x", "$", "g_")
 
 -- Go to start or end of line easier
-keymap.set("nx", "H", "g^")
-keymap.set("nx", "L", "g_")
+keymap.set("n", "H", "g^")
+keymap.set("n", "L", "g_")
+keymap.set("x", "H", "g^")
+keymap.set("x", "L", "g_")
